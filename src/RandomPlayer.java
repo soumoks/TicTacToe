@@ -11,8 +11,17 @@ public class RandomPlayer extends Player{
 
     @Override
     public void makeMove() {
-        //super.makeMove();
-        super.getBoard().addMark(this.randomGenerator.discrete(0, 3), this.randomGenerator.discrete(0, 3), super.getMark());
+        boolean flag = false;
+        while(true){
+            int row = this.randomGenerator.discrete(0,2);
+            int column = this.randomGenerator.discrete(0,2);
+            if(super.getBoard().checkMark(row,column)){
+                flag = super.getBoard().addMark(row,column,super.getMark());
+            }
+            if(flag == true){
+                break;
+            }
+        }
         super.getBoard().display();
     }
 }
