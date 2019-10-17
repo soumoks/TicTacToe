@@ -13,6 +13,6 @@ public class RandomPlayer extends Player{
     public void makeMove() {
         //super.makeMove();
         super.getBoard().addMark(this.randomGenerator.discrete(0, 3), this.randomGenerator.discrete(0, 3), super.getMark());
-        super.setBoard(super.getBoard());
+        super.getBoard().display();
     }
 }

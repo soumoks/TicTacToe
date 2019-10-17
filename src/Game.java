@@ -97,7 +97,7 @@ public class Game implements Constants {
 				result = new HumanPlayer(name, mark);
 				break;
 			case 2:
-				//result = new RandomPlayer(name, mark);
+				result = new RandomPlayer(name, mark);
 				break;
 			case 3:
 				//result = new BlockingPlayer(name, mark);
