@@ -3,6 +3,11 @@ public class Player implements Constants {
     private String name;
     private Board board;
     private Player opponent;
+
+    public char getMark() {
+        return mark;
+    }
+
     private char mark;
 
     public Player(String name, char letter){
@@ -10,6 +15,10 @@ public class Player implements Constants {
         this.mark = letter;
     }
     public Player(){};
+
+    public Board getBoard() {
+        return board;
+    }
 
     /**
      * This method calls makeMove() and checks if any of the possible scenarios occur.
