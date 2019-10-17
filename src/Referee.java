@@ -11,11 +11,7 @@ public class Referee {
         board.display();
         xPlayer.setOpponent(oPlayer);
         oPlayer.setOpponent(xPlayer);
-        while(true){
-            xPlayer.play();
-            oPlayer.play();
-        }
-
+        xPlayer.play();
     }
 
     /**

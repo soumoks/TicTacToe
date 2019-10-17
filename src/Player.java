@@ -3,12 +3,13 @@ public class Player implements Constants {
     private String name;
     private Board board;
     private Player opponent;
+    private char mark;
 
     public char getMark() {
         return mark;
     }
 
-    private char mark;
+
 
     public Player(String name, char letter){
         this.name = name;
@@ -27,14 +28,22 @@ public class Player implements Constants {
      * If the game ends in a tie(markCount = 9) display that the game ends in a Tie and exit the game.
      *
      */
-    public void play(){
-        makeMove();
+    public void play() {
+        while (true) {
+            makeMove();
+            checkWinner();
+            opponent.makeMove();
+            checkWinner();
+        }
+    }
+
+    public void checkWinner(){
         if(this.board.xWins()){
             System.out.println("Game Over!, " + this.name + " is the winner!");
             System.exit(0);
         }
         else if(this.board.oWins()){
-            System.out.println("Game Over!, " + this.name + " is the winner!");
+            System.out.println("Game Over!, " + this.opponent.name + " is the winner!");
             System.exit(0);
         }
         else if(this.board.isFull()){
@@ -50,8 +59,6 @@ public class Player implements Constants {
      */
     public void makeMove(){
         Scanner in = new Scanner(System.in);
-        //TODO
-        // Add a check if the user has entered the input
         //in.hasNext()
         System.out.println(this.name + ", What row should your next " + this.mark + " be placed in?");
         int row = row = in.nextInt();
