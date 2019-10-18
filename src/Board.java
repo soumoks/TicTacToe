@@ -91,6 +91,11 @@ public class Board implements Constants {
 		}
 	}
 
+	public void removeMark(int row, int col){
+		theBoard[row][col] = SPACE_CHAR;
+		markCount--;
+	}
+
 	/**
 	 * Checks if the row, column entered by the user is valid.
 	 * It checks the following:

@@ -2,6 +2,11 @@ import java.util.Scanner;
 public class Player implements Constants {
     private String name;
     private Board board;
+
+    public Player getOpponent() {
+        return opponent;
+    }
+
     private Player opponent;
     private char mark;
 

@@ -9,6 +9,14 @@ public class RandomPlayer extends Player{
         this.randomGenerator = new RandomGenerator();
     }
 
+    public void checkWinner(){
+        super.checkWinner();
+    }
+
+    public char getMark() {
+        return super.getMark();
+    }
+
     @Override
     public void makeMove() {
         boolean flag = false;
