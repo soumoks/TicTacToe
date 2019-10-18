@@ -3,14 +3,18 @@
 
 import java.util.Random;
 
+/**
+ * The type Random generator.
+ */
 class RandomGenerator {
 
-/**
- * creates a random number ranging between lo and hi,  
- * @param lo
- * @param hi
- * @return
- */
+	/**
+	 * creates a random number ranging between lo and hi,
+	 *
+	 * @param lo the lo
+	 * @param hi the hi
+	 * @return int
+	 */
 	int discrete(int lo, int hi)
 	{
 		if(lo >= hi){

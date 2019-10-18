@@ -1,9 +1,21 @@
 import java.util.Random;
 
+/**
+ * The type Random player.
+ */
 public class RandomPlayer extends Player{
+    /**
+     * The Random generator.
+     */
     RandomGenerator randomGenerator;
 
 
+    /**
+     * Instantiates a new Random player.
+     *
+     * @param name the name
+     * @param mark the mark
+     */
     public RandomPlayer(String name, char mark) {
         super(name, mark);
         this.randomGenerator = new RandomGenerator();

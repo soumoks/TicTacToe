@@ -1,6 +1,15 @@
 import java.util.Scanner;
 
+/**
+ * The type Human player.
+ */
 public class HumanPlayer extends Player {
+    /**
+     * Instantiates a new Human player.
+     *
+     * @param name   the name
+     * @param letter the letter
+     */
     public HumanPlayer(String name, char letter){
         super(name,letter);
     }

@@ -2,30 +2,40 @@
 //Game.java
 import java.io.*;
 
+/**
+ * The type Game.
+ */
 public class Game implements Constants {
 
 	private Board theBoard;
 	private Referee theRef;
-	
+
 	/**
 	 * creates a board for the game
 	 */
-    public Game( ) {
+	public Game( ) {
         theBoard  = new Board();
 
 	}
-    
-    /**
-     * calls the referee method runTheGame
-     * @param r refers to the appointed referee for the game 
-     * @throws IOException
-     */
-    public void appointReferee(Referee r) throws IOException {
+
+	/**
+	 * calls the referee method runTheGame
+	 *
+	 * @param r refers to the appointed referee for the game
+	 * @throws IOException the io exception
+	 */
+	public void appointReferee(Referee r) throws IOException {
         theRef = r;
     	theRef.runTheGame();
     }
-    
-	
+
+
+	/**
+	 * The entry point of application.
+	 *
+	 * @param args the input arguments
+	 * @throws IOException the io exception
+	 */
 	public static void main(String[] args) throws IOException {
 		
 		Referee theRef;
@@ -58,16 +68,16 @@ public class Game implements Constants {
         
         theGame.appointReferee(theRef);
 	}
-	
+
 	/**
-	 * Creates the specified type of player indicated by the user. 
-	 * 
-	 * @param name player's name
-	 * @param mark player's mark (X or O)
+	 * Creates the specified type of player indicated by the user.
+	 *
+	 * @param name  player's name
+	 * @param mark  player's mark (X or O)
 	 * @param board refers to the game board
 	 * @param stdin refers to an input stream
 	 * @return a newly created player
-	 * @throws IOException
+	 * @throws IOException the io exception
 	 */
 	static public Player  create_player(String name, char mark, Board board,
 			BufferedReader stdin)throws IOException {

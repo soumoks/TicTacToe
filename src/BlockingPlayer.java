@@ -1,4 +1,13 @@
+/**
+ * The type Blocking player.
+ */
 public class BlockingPlayer extends RandomPlayer {
+    /**
+     * Instantiates a new Blocking player.
+     *
+     * @param name the name
+     * @param mark the mark
+     */
     public BlockingPlayer(String name, char mark) {
         super(name, mark);
     }
@@ -29,7 +38,10 @@ public class BlockingPlayer extends RandomPlayer {
 
     /**
      * Returns true if the opponent wins
-     * @return
+     *
+     * @param row the row
+     * @param col the col
+     * @return boolean
      */
     public boolean testForBlocking(int row,int col){
         //Adds a mark of the opponent to check if the opponent wins

@@ -3,10 +3,16 @@
 //STUDENTS SHOULD ADD CLASS COMMENTS, METHOD COMMENTS, FIELD COMMENTS 
 
 
+/**
+ * The type Board.
+ */
 public class Board implements Constants {
 	private char theBoard[][];
 	private int markCount;
 
+	/**
+	 * Instantiates a new Board.
+	 */
 	public Board() {
 		markCount = 0;
 		theBoard = new char[3][];
@@ -19,9 +25,10 @@ public class Board implements Constants {
 
 	/**
 	 * Gets the marks in each position of the board.
-	 * @param row
-	 * @param col
-	 * @return
+	 *
+	 * @param row the row
+	 * @param col the col
+	 * @return mark
 	 */
 	public char getMark(int row, int col) {
 		return theBoard[row][col];
@@ -29,7 +36,8 @@ public class Board implements Constants {
 
 	/**
 	 * Returns true if markCount becomes 9
-	 * @return
+	 *
+	 * @return boolean
 	 */
 	public boolean isFull() {
 		return markCount == 9;
@@ -37,7 +45,8 @@ public class Board implements Constants {
 
 	/**
 	 * Returns true if X wins the game.
-	 * @return
+	 *
+	 * @return boolean
 	 */
 	public boolean xWins() {
 		if (checkWinner(LETTER_X) == 1)
@@ -48,7 +57,8 @@ public class Board implements Constants {
 
 	/**
 	 * Returns true if O wins the game.
-	 * @return
+	 *
+	 * @return boolean
 	 */
 	public boolean oWins() {
 		if (checkWinner(LETTER_O) == 1)
@@ -76,9 +86,11 @@ public class Board implements Constants {
 
 	/**
 	 * Adds the mark on the board as long as check mark returns true. Adds either an X or an O on the board.
-	 * @param row
-	 * @param col
-	 * @param mark
+	 *
+	 * @param row  the row
+	 * @param col  the col
+	 * @param mark the mark
+	 * @return the boolean
 	 */
 	public boolean addMark(int row, int col, char mark) {
 		if(checkMark(row,col)){
@@ -91,6 +103,12 @@ public class Board implements Constants {
 		}
 	}
 
+	/**
+	 * Remove mark.
+	 *
+	 * @param row the row
+	 * @param col the col
+	 */
 	public void removeMark(int row, int col){
 		theBoard[row][col] = SPACE_CHAR;
 		markCount--;
@@ -103,9 +121,10 @@ public class Board implements Constants {
 	 * If the row,column does not have a mark.
 	 * Returns true if the above conditions are met.
 	 * Returns false otherwise.
-	 * @param row
-	 * @param col
-	 * @return
+	 *
+	 * @param row the row
+	 * @param col the col
+	 * @return boolean
 	 */
 	public boolean checkMark(int row, int col){
 		if((row>=0 && row<=2) && (col>=0 && col<=2)){
@@ -123,7 +142,6 @@ public class Board implements Constants {
 
 	/**
 	 * Clears the Board. Removes any marks on the board with Spaces.
-	 *
 	 */
 	public void clear() {
 		for (int i = 0; i < 3; i++)
@@ -138,8 +156,9 @@ public class Board implements Constants {
 	 * Column complete.
 	 * Diagonal complete.
 	 * Opposite Diagonal complete.
-	 * @param mark
-	 * @return
+	 *
+	 * @param mark the mark
+	 * @return int
 	 */
 	int checkWinner(char mark) {
 		int row, col;

@@ -1,4 +1,13 @@
+/**
+ * The type Smart player.
+ */
 public class SmartPlayer extends BlockingPlayer {
+    /**
+     * Instantiates a new Smart player.
+     *
+     * @param name the name
+     * @param mark the mark
+     */
     public SmartPlayer(String name, char mark) {
         super(name, mark);
     }

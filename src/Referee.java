@@ -1,3 +1,6 @@
+/**
+ * The type Referee.
+ */
 public class Referee {
     private Player xPlayer;
     private Player oPlayer;
@@ -16,7 +19,8 @@ public class Referee {
 
     /**
      * Sets the board
-     * @param board
+     *
+     * @param board the board
      */
     public void setBoard(Board board){
         this.board = board;
@@ -25,7 +29,8 @@ public class Referee {
 
     /**
      * Sets the O player
-     * @param oPlayer
+     *
+     * @param oPlayer the o player
      */
     public void setoPlayer(Player oPlayer){
         this.oPlayer = oPlayer;
@@ -33,7 +38,8 @@ public class Referee {
 
     /**
      * Sets the X player
-     * @param xPlayer
+     *
+     * @param xPlayer the x player
      */
     public void setxPlayer(Player xPlayer){
         this.xPlayer = xPlayer;
