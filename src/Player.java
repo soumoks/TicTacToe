@@ -1,28 +1,25 @@
 import java.util.Scanner;
-public class Player implements Constants {
-    private String name;
-    private Board board;
+public abstract class Player implements Constants {
+    protected String name;
+    protected Board board;
+    protected Player opponent;
+    protected char mark;
 
     public Player getOpponent() {
         return opponent;
     }
 
-    private Player opponent;
-    private char mark;
-
     public char getMark() {
         return mark;
     }
 
-
-
-    public Player(String name, char letter){
+    protected Player(String name, char letter){
         this.name = name;
         this.mark = letter;
     }
     public Player(){};
 
-    public Board getBoard() {
+    protected Board getBoard() {
         return board;
     }
 
@@ -33,7 +30,7 @@ public class Player implements Constants {
      * If the game ends in a tie(markCount = 9) display that the game ends in a Tie and exit the game.
      *
      */
-    public void play() {
+    protected void play() {
         while (true) {
             makeMove();
             checkWinner();
@@ -62,23 +59,8 @@ public class Player implements Constants {
      * Marks either an X or an O in the position indicated by the player by calling method addMark part of the Board class.
      * The add mark internally calls the checkmark method which results in the player entering the row and column in case of an invalid value.
      */
-    public void makeMove(){
-        Scanner in = new Scanner(System.in);
-        //in.hasNext()
-        System.out.println(this.name + ", What row should your next " + this.mark + " be placed in?");
-        int row = row = in.nextInt();
-        System.out.println(this.name + ", What column should your next " + this.mark + " be placed in?");
-        int column = in.nextInt();
-        if(board.checkMark(row,column)){
-            board.addMark(row,column,this.mark);
-        }
-        else{
-            System.out.println("Please enter a valid row and column");
-            makeMove();
-        }
-        board.display();
-    }
-
+    //This is an abstract method as the child classes implement their own methods.
+    protected abstract void makeMove();
 
     /**
      * Connects the other player to this player
@@ -95,6 +77,4 @@ public class Player implements Constants {
     public void setBoard(Board theBoard){
         this.board = theBoard;
     }
-
-
 }
