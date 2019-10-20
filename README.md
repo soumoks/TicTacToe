@@ -1,4 +1,4 @@
-# TicTacToe - Java console bases application.
+# TicTacToe - Java console based application.
 
 This game mainly consists of 4 players.
 1. Human - us.
