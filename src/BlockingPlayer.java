@@ -8,13 +8,15 @@ public class BlockingPlayer extends RandomPlayer {
      * @param name the name
      * @param mark the mark
      */
-    public BlockingPlayer(String name, char mark) {
+    public BlockingPlayer(String name, char mark) throws CloneNotSupportedException {
         super(name, mark);
+        Board newBoard = super.getBoard().clone();
     }
 
     public char getMark() {
         return super.getMark();
     }
+
 
     public void makeMove() {
         //Iterate through the board.

@@ -29,6 +29,10 @@ public class RandomPlayer extends Player{
         return super.getMark();
     }
 
+//    public RandomPlayer clone() throws CloneNotSupportedException {
+//        return (RandomPlayer)super.clone();
+//    }
+
     @Override
     public void makeMove() {
         boolean flag = false;

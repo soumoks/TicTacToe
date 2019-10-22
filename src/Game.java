@@ -36,7 +36,7 @@ public class Game implements Constants {
 	 * @param args the input arguments
 	 * @throws IOException the io exception
 	 */
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, CloneNotSupportedException {
 		
 		Referee theRef;
 		Player xPlayer, oPlayer;
@@ -80,7 +80,7 @@ public class Game implements Constants {
 	 * @throws IOException the io exception
 	 */
 	static public Player  create_player(String name, char mark, Board board,
-			BufferedReader stdin)throws IOException {
+			BufferedReader stdin) throws IOException, CloneNotSupportedException {
 		// Get the player type.
 		final int NUMBER_OF_TYPES = 4;
 		System.out.print ( "\nWhat type of player is " + name + "?\n");

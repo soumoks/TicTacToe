@@ -3,7 +3,7 @@ import java.util.Scanner;
 /**
  * The type Player.
  */
-public abstract class Player implements Constants {
+public abstract class Player implements Constants,Cloneable {
     /**
      * The Name.
      */

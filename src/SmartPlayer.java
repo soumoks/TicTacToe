@@ -8,7 +8,7 @@ public class SmartPlayer extends BlockingPlayer {
      * @param name the name
      * @param mark the mark
      */
-    public SmartPlayer(String name, char mark) {
+    public SmartPlayer(String name, char mark) throws CloneNotSupportedException {
         super(name, mark);
     }
 

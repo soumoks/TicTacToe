@@ -6,7 +6,7 @@
 /**
  * The type Board.
  */
-public class Board implements Constants {
+public class Board implements Constants,Cloneable {
 	private char theBoard[][];
 	private int markCount;
 
@@ -101,6 +101,10 @@ public class Board implements Constants {
 		else{
 			return false;
 		}
+	}
+
+	public Board clone() throws CloneNotSupportedException {
+		return (Board)super.clone();
 	}
 
 	/**
