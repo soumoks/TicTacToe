@@ -24,7 +24,6 @@ public class Referee {
      */
     public void setBoard(Board board){
         this.board = board;
-
     }
 
     /**
