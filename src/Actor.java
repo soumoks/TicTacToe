@@ -34,7 +34,7 @@ public class Actor implements Runnable,Constants{
                 }
                 else{
                     //line = line.toUpperCase();
-                    socketOut.println(line);
+                    //socketOut.println(line);
                     System.out.println(line);
                     String [] temp = new String [3];
                     temp = line.split(",");
@@ -42,6 +42,14 @@ public class Actor implements Runnable,Constants{
 
                     //Send this response over to the clients. Since we have this method synchronised, the output is being sent over
                     //to only one client at any given point of time.
+
+                    // This also creates the issue of the clients not sharing the board.
+                    //The board is being updated on the server but since the board is individually updated on the client side, the two clients are
+                    // are seeing separate boards.
+
+                    //Possible solution could be to serialise the board object. Send it to the client after every move and update
+                    //the board on both the clients.
+
                     response = temp[0] + "," + temp[1] + "," + mark;
                     socketOut.println(response);
                     theBoard.display();

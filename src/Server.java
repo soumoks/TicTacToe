@@ -99,27 +99,5 @@ public class Server implements Constants {
         Server myServer = new Server();
         System.out.println("Server is running..");
         myServer.runServer();
-//        try{
-//            //Accepting the connection
-//            myServer.aSocket = myServer.serverSocket.accept();
-//            System.out.println("Connection accepted by server");
-//            //This part will differ once we have multiple threads.
-//            myServer.socketIn = new BufferedReader(new InputStreamReader(myServer.aSocket.getInputStream()));
-//            myServer.socketOut = new PrintWriter(myServer.aSocket.getOutputStream(),true);
-//
-//            myServer.aSocket = myServer.serverSocket.accept();
-//            System.out.println("Connection accepted by server");
-//            //This part will differ once we have multiple threads.
-//            myServer.socketIn = new BufferedReader(new InputStreamReader(myServer.aSocket.getInputStream()));
-//            myServer.socketOut = new PrintWriter(myServer.aSocket.getOutputStream(),true);
-//
-//            myServer.printInput();
-//
-//            myServer.socketIn.close();
-//            myServer.socketOut.close();
-//        }catch (IOException e){
-//            e.printStackTrace();
-//        }
-
     }
 }

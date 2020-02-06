@@ -58,7 +58,7 @@ public class Client implements Constants{
                 }
                 setPlayer(response);
                 validateServerResponse(response);
-                //setMark(response);
+                setMark(response);
             }
 
         }
@@ -104,8 +104,10 @@ public class Client implements Constants{
         String [] temp = new String [3];
 
         //Checking to see if the server response is anything other than the string containing row,col and mark
-        if(response != null && !response.equals(LETTER_X) && !response.equals(LETTER_O)){
+        if(response != null && response.charAt(0) != LETTER_X && response.charAt(0) != LETTER_O){
             temp = response.split(",");
+
+            //Add an array size check here
             row = Integer.parseInt(temp[0]);
             col = Integer.parseInt(temp[1]);
             mark = temp[2];
@@ -114,12 +116,21 @@ public class Client implements Constants{
             if((row >= 0 && row <= 2) && (col >=0 && col <= 2)){
 
                 //Changing mark to lower case letters so that they are visibile on the GUI
-                if(mark.equals(LETTER_X)){
+                if(mark.charAt(0) == LETTER_X){
                     button[row][col].setText("x");
                 }
-                else if(mark.equals(LETTER_O)){
+                else{
+                    System.out.println("Mark is not equal to X");
+                }
+                if(mark.charAt(0) == LETTER_O){
                     button[row][col].setText("o");
                 }
+                else{
+                    System.out.println("Mark is not equal to O");
+                }
+            }
+            else{
+                System.out.println("Row and column not in limits!");
             }
         }
     }
