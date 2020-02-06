@@ -232,4 +232,6 @@ public class Board implements Constants {
 			System.out.print("|     ");
 		System.out.println("|");
 	}
+
+
 }

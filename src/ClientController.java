@@ -32,7 +32,13 @@ public class ClientController implements Constants {
                     if(temp[row][col] == e.getSource()) {
                         System.out.println("Row:" + row);
                         System.out.println("Column:" + col);
-                        aClient.sendButtonPress(row,col);
+                        //if(theView.getPlayerSymbol() == LETTER_X){
+                            aClient.sendButtonPress(row,col);
+                        //}
+                        //else if(theView.getPlayerSymbol() == LETTER_O){
+                            //aClient.sendButtonPress(row,col);
+                        //}
+
                     }
                 }
             }

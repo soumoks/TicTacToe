@@ -50,7 +50,7 @@ public class GameView extends JFrame {
      * View Constructor that is responsible for accepting user input and creates the frame.
      */
     public GameView(){
-        playerNameInput();
+        //playerNameInput();
         createGameWindow();
     }
 
