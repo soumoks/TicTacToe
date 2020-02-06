@@ -92,7 +92,7 @@ public class Board implements Constants {
 	 * @param mark the mark
 	 * @return the boolean
 	 */
-	public boolean addMark(int row, int col, char mark) {
+	public synchronized boolean addMark(int row, int col, char mark) {
 		if(checkMark(row,col)){
 			theBoard[row][col] = mark;
 			markCount++;

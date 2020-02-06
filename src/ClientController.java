@@ -16,8 +16,8 @@ public class ClientController implements Constants {
     public ClientController(GameView v,Client c){
         theView = v;
         theView.setPlayerName(theView.getNameX());
-        theView.setPlayerSymbol(LETTER_X);
-        theView.setMessageArea(theView.getNameX() + ", Please make your move");
+        //theView.setPlayerSymbol(LETTER_X);
+        //theView.setMessageArea(theView.getNameX() + ", Please make your move");
         theView.addButtonListener(new TestButtonListener());
         aClient = c;
     }
@@ -32,12 +32,24 @@ public class ClientController implements Constants {
                     if(temp[row][col] == e.getSource()) {
                         System.out.println("Row:" + row);
                         System.out.println("Column:" + col);
-                        //if(theView.getPlayerSymbol() == LETTER_X){
-                            aClient.sendButtonPress(row,col);
-                        //}
-                        //else if(theView.getPlayerSymbol() == LETTER_O){
-                            //aClient.sendButtonPress(row,col);
-                        //}
+
+                        //TODO
+                        /*
+                        This logic should be taken away from the client. Instead, we should set whatever is being sent by the
+                        server in the GameView.
+                        This would ensure that we don't set conflicting marks on different client screens.
+                        Implementation of this method would be done as part of the Client class.
+
+                         */
+                        aClient.sendButtonPress(row,col);
+//                        if(theView.getPlayerSymbol() == LETTER_X){
+//                            aClient.sendButtonPress(row,col);
+//                            temp[row][col].setText("x");
+//                        }
+//                        else if(theView.getPlayerSymbol() == LETTER_O){
+//                            aClient.sendButtonPress(row,col);
+//                            temp[row][col].setText("o");
+//                        }
 
                     }
                 }

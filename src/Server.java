@@ -7,6 +7,9 @@ import java.net.ServerSocket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class Server implements Constants {
     private Socket aSocket;
@@ -15,8 +18,17 @@ public class Server implements Constants {
     private ServerSocket serverSocket;
     private ExecutorService pool;
     private Board theBoard;
+    private final Lock gameLock; // to lock game for synchronization
+    private final Condition otherPlayerConnected; // to wait for other player
+    private final Condition otherPlayerTurn; // to wait for other player's turn
 
     public Server(){
+        gameLock = new ReentrantLock(); // create lock for game
+        // condition variable for both players being connected
+        otherPlayerConnected = gameLock.newCondition();
+
+        // condition variable for the other player's turn
+        otherPlayerTurn = gameLock.newCondition();
         try {
             //Server socket accepts the port as a parameter
             serverSocket = new ServerSocket(9090);
@@ -39,20 +51,15 @@ public class Server implements Constants {
                 Actor cap = new Actor(socketIn,socketOut,theBoard,LETTER_X);
                 pool.execute(cap);
 
+                /*
+                Added a new server Socket accept. Need to check if this is required or not. After adding this, we are getting the first player as O
+                and the second player as X
+                 */
+                aSocket = serverSocket.accept();
                 socketIn = new BufferedReader(new InputStreamReader(aSocket.getInputStream()));
                 socketOut = new PrintWriter(aSocket.getOutputStream(),true);
                 Actor cap2 = new Actor(socketIn,socketOut,theBoard,LETTER_O);
                 pool.execute(cap2);
-
-                //pool.shutdown();
-                /*
-                https://stackoverflow.com/questions/20495414/thread-join-equivalent-in-executor
-                Await termination of all threads before further compute.
-                Requires import java.util.concurrent.TimeUnit;
-                */
-//                while (!pool.awaitTermination(24L, TimeUnit.HOURS)) {
-//                    System.out.println("Not yet. Still waiting for termination");
-//                }
             }
         }catch (IOException e){
             e.printStackTrace();
