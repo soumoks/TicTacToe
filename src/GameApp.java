@@ -7,8 +7,8 @@ import java.io.IOException;
 public class GameApp implements Constants {
     public static void main(String[] args) throws IOException {
 
-        Referee theRef;
-        Player xPlayer, oPlayer;
+//        Referee theRef;
+//        Player xPlayer, oPlayer;
         Game theGame = new Game();
 
         //Initialise the Frame Object
@@ -19,15 +19,15 @@ public class GameApp implements Constants {
         theFrame.setVisible(true);
         theFrame.pack();
 
-        theRef = new Referee();
-        theRef.setBoard(theGame.getTheBoard());
+//        theRef = new Referee();
+//        theRef.setBoard(theGame.getTheBoard());
+//
+//        xPlayer = theGame.create_player (theFrame.getNameX(), LETTER_X, theGame.getTheBoard());
+//        oPlayer = theGame.create_player (theFrame.getNameO(), LETTER_O, theGame.getTheBoard());
 
-        xPlayer = theGame.create_player (theFrame.getNameX(), LETTER_X, theGame.getTheBoard());
-        oPlayer = theGame.create_player (theFrame.getNameO(), LETTER_O, theGame.getTheBoard());
+        //theRef.setoPlayer(oPlayer);
+        //theRef.setxPlayer(xPlayer);
 
-        theRef.setoPlayer(oPlayer);
-        theRef.setxPlayer(xPlayer);
-
-        theGame.appointReferee(theRef);
+        //theGame.appointReferee(theRef);
     }
 }

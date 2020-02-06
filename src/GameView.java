@@ -20,8 +20,16 @@ public class GameView extends JFrame {
     private JLabel userNameLabel;
     private String nameX;
     private String nameO;
+    private String name;
 
 
+    /**
+     * Returns the name of the player to the client class
+     * @return
+     */
+    public String getName(){
+        return name;
+    }
     /**
      * Returns the name of the X player
      * @return
@@ -151,16 +159,16 @@ public class GameView extends JFrame {
      * Function is responsible for accepting Player Name.
      */
     public void playerNameInput(){
-        nameX = JOptionPane.showInputDialog("Enter the name of the X player");
-        while (nameX == null) {
+        name = JOptionPane.showInputDialog("Enter your name");
+        while (name == null) {
             JOptionPane.showMessageDialog(null, "Please Try again!", " Warning",JOptionPane.PLAIN_MESSAGE);
-            nameX = JOptionPane.showInputDialog("Enter the name of the X player");
+            name = JOptionPane.showInputDialog("Enter your name");
         }
-        nameO = JOptionPane.showInputDialog("Enter the name of the O player");
-        while (nameO == null) {
-            JOptionPane.showMessageDialog(null, "Please Try again!", " Warning",JOptionPane.PLAIN_MESSAGE);
-            nameO = JOptionPane.showInputDialog("Enter the name of the O player");
-        }
+//        nameO = JOptionPane.showInputDialog("Enter the name of the O player");
+//        while (nameO == null) {
+//            JOptionPane.showMessageDialog(null, "Please Try again!", " Warning",JOptionPane.PLAIN_MESSAGE);
+//            nameO = JOptionPane.showInputDialog("Enter the name of the O player");
+//        }
     }
 
     /**
