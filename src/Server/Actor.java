@@ -1,3 +1,4 @@
+package Server;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -8,6 +9,7 @@ public class Actor implements Runnable,Constants{
     private BufferedReader socketIn;
     private Board theBoard;
     private char mark;
+    private WriteRecord writeRecord;
 
     /**
      * Constructor
@@ -21,7 +23,7 @@ public class Actor implements Runnable,Constants{
     }
 
     @Override
-    public synchronized void run() {
+    public void run() {
         String line = "";
         String response = "";
         while(true){
@@ -51,7 +53,8 @@ public class Actor implements Runnable,Constants{
                     //the board on both the clients.
 
                     response = temp[0] + "," + temp[1] + "," + mark;
-                    socketOut.println(response);
+                    socketOut.println(new Message(theBoard,response,mark));
+
                     theBoard.display();
                 }
             } catch (IOException e) {
@@ -60,12 +63,16 @@ public class Actor implements Runnable,Constants{
         }
     }
 
+    /**
+     * This creates the player and sets up the GUI with client X and Y
+     * @param mark
+     */
     public void createPlayer(char mark){
         if(mark == LETTER_X){
-            socketOut.println(LETTER_X);
+            socketOut.println(new Message(theBoard,"Setting player",mark));
         }
         else if(mark == LETTER_O){
-            socketOut.println(LETTER_O);
+            socketOut.println(new Message(theBoard,"Setting player",mark));
         }
     }
 }

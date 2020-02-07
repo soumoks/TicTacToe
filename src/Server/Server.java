@@ -1,3 +1,4 @@
+package Server;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -18,17 +19,19 @@ public class Server implements Constants {
     private ServerSocket serverSocket;
     private ExecutorService pool;
     private Board theBoard;
-    private final Lock gameLock; // to lock game for synchronization
-    private final Condition otherPlayerConnected; // to wait for other player
-    private final Condition otherPlayerTurn; // to wait for other player's turn
+//    private final Lock gameLock; // to lock game for synchronization
+//    private final Condition otherPlayerConnected; // to wait for other player
+//    private final Condition otherPlayerTurn; // to wait for other player's turn
+    private WriteRecord writeRecord;
 
     public Server(){
-        gameLock = new ReentrantLock(); // create lock for game
-        // condition variable for both players being connected
-        otherPlayerConnected = gameLock.newCondition();
-
-        // condition variable for the other player's turn
-        otherPlayerTurn = gameLock.newCondition();
+//
+//        gameLock = new ReentrantLock(); // create lock for game
+//        // condition variable for both players being connected
+//        otherPlayerConnected = gameLock.newCondition();
+//
+//        // condition variable for the other player's turn
+//        otherPlayerTurn = gameLock.newCondition();
         try {
             //Server socket accepts the port as a parameter
             serverSocket = new ServerSocket(9090);
@@ -44,12 +47,14 @@ public class Server implements Constants {
         try{
             while(true){
                 aSocket = serverSocket.accept();
-                System.out.println("Connection accepted by server");
+
+               // System.out.println("Connection accepted by server");
                 socketIn = new BufferedReader(new InputStreamReader(aSocket.getInputStream()));
                 socketOut = new PrintWriter(aSocket.getOutputStream(),true);
-
                 Actor cap = new Actor(socketIn,socketOut,theBoard,LETTER_X);
-                pool.execute(cap);
+
+                writeRecord = new WriteRecord(new Message(theBoard,"Updated Board",LETTER_X),aSocket);
+                writeRecord.sendObject();
 
                 /*
                 Added a new server Socket accept. Need to check if this is required or not. After adding this, we are getting the first player as O
@@ -59,6 +64,10 @@ public class Server implements Constants {
                 socketIn = new BufferedReader(new InputStreamReader(aSocket.getInputStream()));
                 socketOut = new PrintWriter(aSocket.getOutputStream(),true);
                 Actor cap2 = new Actor(socketIn,socketOut,theBoard,LETTER_O);
+                writeRecord = new WriteRecord(new Message(theBoard,"Updated Board",LETTER_O),aSocket);
+                writeRecord.sendObject();
+
+                pool.execute(cap);
                 pool.execute(cap2);
             }
         }catch (IOException e){
@@ -73,31 +82,11 @@ public class Server implements Constants {
         }
     }
 
-    /**
-     * Function just prints whatever is present in the socket.
-     */
-    public void printInput(){
-        String line = "";
-        while(true){
-            try{
-                line = socketIn.readLine();
-                if(line != null){
-                    socketOut.println(line);
 
-                    //Print whatever is in the socket to console.
-                    System.out.println(line);
-                }
-
-            }catch (IOException e){
-                e.printStackTrace();
-                break;
-            }
-        }
-    }
 
     public static void main(String [] args) throws IOException{
         Server myServer = new Server();
-        System.out.println("Server is running..");
+     //   System.out.println("Server is running..");
         myServer.runServer();
     }
 }
